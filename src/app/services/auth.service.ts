@@ -28,9 +28,13 @@ export class AuthService {
       .subscribe(
         (res: any) => {
           console.log({ 'This is the response': res });
-          this.cookie.set('session', res.usuario, { expires: 3 / 24 });
-          this.router.navigate(['placeholder']);
-          this.toastr.success(res.mensaje);
+          if (res.validado === true) {
+            this.cookie.set('session', res.usuario, { expires: 3 / 24 });
+            this.router.navigate(['placeholder']);
+            this.toastr.success(res.mensaje);
+          } else {
+            this.toastr.error(res.mensaje);
+          }
         },
         (err: Error) => {
           if (err) return this.toastr.error('Usuario o contraseña incorrecta');

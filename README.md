@@ -1,27 +1,9 @@
-# Examen
+# Prueba de Ingreso
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
+Este proyecto muestra todo el progreso que yo Carlos Acosta Domínguez he podido realizar en un día.
 
-## Development server
+# Caracteristicas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Este proyecto cuenta con un inicio y registro de sesión sencillos, mostrando mensajes a traves de un pop-up cuando una operación es realizada.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Los datos son estáticos y en el apartado del componente Placeholder existe la opción de cambiar la variable datos por False, mostrando la manera en la que la app se vería sin datos.
