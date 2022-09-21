@@ -1,0 +1,296 @@
+<nav class="placeholder-nav">
+  <fa-icon [icon]="faBars" class="option-bars"></fa-icon>
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+    alt="user placeholder"
+  />
+  <p>Operaciones</p>
+  <fa-icon [icon]="faSignOut" (click)="logout()"></fa-icon>
+</nav>
+<main>
+  <div class="filters-main">
+    <select name="Ubicación">
+      <option selected disabled>
+        Ubicación <span><fa-icon [icon]="faCaretDown"></fa-icon></span>
+      </option>
+    </select>
+    <select>
+      <option selected disabled>Zona</option>
+      <span><fa-icon [icon]="faCaretDown"></fa-icon></span>
+    </select>
+    <select>
+      <option selected disabled>Sensor</option>
+      <span><fa-icon [icon]="faCaretDown"></fa-icon></span>
+    </select>
+  </div>
+  <div class="main-section">
+    <div class="main-container">
+      <div class="upper-info">
+        <div class="left-info">
+          <p class="left-info-title">Nivel de Riesgo</p>
+          <div class="danger-info">
+            <div class="danger-container">
+              <span class="danger danger-red">0</span>
+              <p>Crítico</p>
+            </div>
+            <div class="danger-container">
+              <span class="danger danger-orange">0</span>
+              <p>Moderado</p>
+            </div>
+            <div class="danger-container">
+              <span class="danger danger-green">0</span>
+              <p>Bajo</p>
+            </div>
+          </div>
+        </div>
+        <div class="table-filters">
+          <div class="search-container">
+            <form action="">
+              <input type="text" class="danger-search" />
+              <fa-icon [icon]="faSearch"></fa-icon>
+              <select name="región">
+                <option selected disabled value="">Cuartos fríos</option>
+              </select>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="main-table">
+        <br />
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Ubicación</th>
+              <th scope="col">Sensor</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Tiempo transcurrido</th>
+            </tr>
+          </thead>
+
+          <tbody class="table-group-divider" *ngIf="data === true">
+            <tr>
+              <th scope="row">Jalisco</th>
+              <th scope="row">Temperatura</th>
+              <th scope="row">20/09/2022</th>
+              <th scope="row">14:35</th>
+              <th scope="row">5:59</th>
+            </tr>
+            <tr>
+              <th scope="row">Jalisco</th>
+              <th scope="row">Temperatura</th>
+              <th scope="row">20/09/2022</th>
+              <th scope="row">14:35</th>
+              <th scope="row">5:59</th>
+            </tr>
+            <tr>
+              <th scope="row">Jalisco</th>
+              <th scope="row">Temperatura</th>
+              <th scope="row">20/09/2022</th>
+              <th scope="row">14:35</th>
+              <th scope="row">5:59</th>
+            </tr>
+            <tr>
+              <th scope="row">Jalisco</th>
+              <th scope="row">Temperatura</th>
+              <th scope="row">20/09/2022</th>
+              <th scope="row">14:35</th>
+              <th scope="row">5:59</th>
+            </tr>
+          </tbody>
+        </table>
+        <div class="placeholder-img" *ngIf="data === false">
+          <img
+            src="../../../assets/imgs/place_holder.svg"
+            alt="No data was found"
+            class="no-data"
+          />
+        </div>
+      </div>
+      <div class="export-container" *ngIf="data === true">
+        <select class="export-tables">
+          <option selected disabled>Exportar</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div class="main-specs">
+      <div class="left-specs">
+        <strong *ngIf="data === true">Zona 26</strong>
+        <p *ngIf="data === true">Planta de filtrado</p>
+      </div>
+      <div class="right-specs">
+        <p>Temperatura Actual</p>
+      </div>
+    </div>
+    <div class="main-info">
+      <div class="square status">
+        <strong>Estado</strong>
+        <div class="alert-img" *ngIf="data === true">
+          <fa-icon [icon]="faCircleExclamation"></fa-icon>
+          <br />
+          <strong>Fuera de Rango</strong>
+        </div>
+        <div class="alert-img" *ngIf="data === false">
+          <br />
+          <strong>- - -</strong>
+        </div>
+      </div>
+      <div class="square temp">
+        <strong>Temperatura</strong>
+        <div class="temperature-spec">
+          <p>Actual</p>
+          <div class="actual-temp">
+            <span class="temperature-data upper-data">
+              <strong *ngIf="data === true">28°C</strong>
+              <strong *ngIf="data === false">- -</strong>
+            </span>
+          </div>
+          <p>Incidencia</p>
+          <div class="incident-temp">
+            <span class="temperature-data lower-data">
+              <strong *ngIf="data === true">1°C</strong>
+              <strong *ngIf="data === false">- -</strong>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="square origin">
+        <strong>Origen</strong>
+
+        <div class="origin-spec">
+          <strong *ngIf="data === true">Sensor de corriente</strong>
+          <strong *ngIf="data === false">- - -</strong>
+        </div>
+      </div>
+      <div class="square register">
+        <strong>Registro de incidente</strong>
+        <div class="register-spec">
+          <strong *ngIf="data === true">9:40</strong>
+          <strong *ngIf="data === false">- - -</strong>
+        </div>
+      </div>
+    </div>
+    <div class="danger-level">
+      <div class="left-text">
+        <p>Nivel de riesgo por dispositivo</p>
+      </div>
+      <div class="danger-history">
+        <div class="danger-info">
+          <div class="danger-container historic">
+            <span class="danger danger-red history">0</span>
+            <p>Crítico</p>
+          </div>
+          <div class="danger-container historic">
+            <span class="danger danger-orange history">0</span>
+            <p>Moderado</p>
+          </div>
+          <div class="danger-container historic">
+            <span class="danger danger-green history">0</span>
+            <p>Bajo</p>
+          </div>
+        </div>
+      </div>
+      <div class="right-text">
+        <p>Histórico</p>
+      </div>
+    </div>
+    <div class="incident-info">
+      <div class="date-time">
+        <strong *ngIf="data === true">28 de Diciembre de 2021</strong>
+      </div>
+      <div class="inactive-time">
+        <p *ngIf="data === true">59 minutos inactivo</p>
+      </div>
+      <div class="red-info info">
+        <div class="initial info-text">
+          <p>Temperatura inicial</p>
+          <span class="initial-data init-temp">
+            <p *ngIf="data === true">28°C</p>
+            <p *ngIf="data === false">- - -</p>
+          </span>
+          <p>Apagado</p>
+          <span class="initial-data init-hour">
+            <p *ngIf="data === true">09:45</p>
+            <p *ngIf="data === false">- - -</p>
+          </span>
+          <p>Origen</p>
+          <span class="initial-data init-origin">
+            <p *ngIf="data === true">Sensor de corriente</p>
+          </span>
+        </div>
+        <div class="final info-text">
+          <p>Temperatura final</p>
+          <span class="initial-data init-temp">
+            <p *ngIf="data === true">28°C</p>
+            <p *ngIf="data === false">- - -</p>
+          </span>
+          <p>Encendido</p>
+          <span class="initial-data init-hour">
+            <p *ngIf="data === true">09:45</p>
+            <p *ngIf="data === false">- - -</p>
+          </span>
+          <p>Origen</p>
+          <span class="initial-data final-origin">
+            <p *ngIf="data === true">Carlos Acosta</p>
+          </span>
+        </div>
+      </div>
+      <br />
+      <div class="date-time">
+        <strong *ngIf="data === true">28 de Diciembre de 2021</strong>
+      </div>
+      <div class="inactive-time">
+        <p *ngIf="data === true">59 minutos inactivo</p>
+      </div>
+      <div class="orange-info info">
+        <div class="initial info-text">
+          <p>Temperatura inicial</p>
+          <span class="initial-data init-temp">
+            <p *ngIf="data === true">28°C</p>
+            <p *ngIf="data === false">- - -</p>
+          </span>
+          <p>Apagado</p>
+          <span class="initial-data init-hour">
+            <p *ngIf="data === true">09:45</p>
+            <p *ngIf="data === false">- - -</p>
+          </span>
+          <p>Origen</p>
+          <span class="initial-data init-origin">
+            <p *ngIf="data === true">Sensor de corriente</p>
+          </span>
+        </div>
+        <div class="final info-text">
+          <p>Temperatura final</p>
+          <span class="initial-data init-temp">
+            <p *ngIf="data === true">28°C</p>
+            <p *ngIf="data === false">- - -</p>
+          </span>
+          <p>Encendido</p>
+          <span class="initial-data init-hour">
+            <p *ngIf="data === true">09:45</p>
+            <p *ngIf="data === false">- - -</p>
+          </span>
+          <p>Origen</p>
+          <span class="initial-data final-origin">
+            <p *ngIf="data === true">Carlos Acosta</p>
+          </span>
+        </div>
+      </div>
+      <select class="info-export">
+        <option selected disabled>Export</option>
+      </select>
+    </div>
+  </section>
+</main>
+<aside>
+  <div class="dashboard">
+    <fa-icon></fa-icon>
+    <h2>Dashboard</h2>
+  </div>
+  <div class="alertamiento">
+    <fa-icon></fa-icon>
+    <h2>Alertamiento</h2>
+  </div>
+</aside>
